@@ -28,6 +28,8 @@ class CallHelper{
       acceptButton: ZegoCallButtonUIConfig(
         visible: true,
         icon: Text('call')
+          //fff this
+
 
       )
 
@@ -48,22 +50,22 @@ class CallHelper{
     ),
     ),
 
-      requireConfig: (ZegoCallInvitationData data) {
-        final config = (data.invitees.length > 1)
-            ? ZegoCallType.videoCall == data.type
-            ? ZegoUIKitPrebuiltCallConfig.groupVideoCall()
-            : ZegoUIKitPrebuiltCallConfig.groupVoiceCall()
-            : ZegoCallType.videoCall == data.type
-            ? ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
-            : ZegoUIKitPrebuiltCallConfig.oneOnOneVoiceCall();
-
-        /// support minimizing, show minimizing button
-        config.topMenuBar.isVisible = true;
-        config.topMenuBar.buttons
-            .insert(0, ZegoCallMenuBarButtonName.minimizingButton);
-
-        return config;
-      },
+      // requireConfig: (ZegoCallInvitationData data) {
+      //   final config = (data.invitees.length > 1)
+      //       ? ZegoCallType.videoCall == data.type
+      //       ? ZegoUIKitPrebuiltCallConfig.groupVideoCall()
+      //       : ZegoUIKitPrebuiltCallConfig.groupVoiceCall()
+      //       : ZegoCallType.videoCall == data.type
+      //       ? ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
+      //       : ZegoUIKitPrebuiltCallConfig.oneOnOneVoiceCall();
+      //
+      //   /// support minimizing, show minimizing button
+      //   config.topMenuBar.isVisible = true;
+      //   config.topMenuBar.buttons
+      //       .insert(0, ZegoCallMenuBarButtonName.minimizingButton);
+      //
+      //   return config;
+      // },
     );
   }
 
