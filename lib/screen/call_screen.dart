@@ -23,6 +23,10 @@ class CallScreen extends StatelessWidget {
         ZegoUIKitSignalingPlugin()
         //ffff
         //fff
+        //ffff
+        //fff
+        //ffff
+        //fff
       ],
       // You can also use groupVideo/groupVoice/oneOnOneVoice to make more types of calls.
       config: ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
