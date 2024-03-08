@@ -21,12 +21,7 @@ class CallScreen extends StatelessWidget {
       callID: callId,
       plugins: [
         ZegoUIKitSignalingPlugin()
-        //ffff
-        //fff
-        //ffff
-        //fff
-        //ffff
-        //fff
+
       ],
       // You can also use groupVideo/groupVoice/oneOnOneVoice to make more types of calls.
       config: ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
@@ -36,17 +31,4 @@ class CallScreen extends StatelessWidget {
     );;
   }
 
-  //joinCall(String callid){
-
-    // ZegoUIKitPrebuiltCallInvitationService().init(
-    //
-    // notificationConfig: ZegoCallInvitationNotificationConfig(
-    // androidNotificationConfig: ZegoCallAndroidNotificationConfig(
-    // showFullScreen: true,
-    // ),
-    // ),
-    //
-    // );
-
- // }
 }
