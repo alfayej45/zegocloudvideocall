@@ -11,6 +11,7 @@ import '../../util/all_key.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key,required this.callId,required this.userId,required this.username});
 
+
   final String callId;
   final String userId;
   final String username;
@@ -20,6 +21,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  static String callUserId = "";
+  @override
+  void initState() {
+    CallHelper.onUserLogin(widget.username,widget.userId);
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +40,70 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          ElevatedButton(onPressed: (){
-            //check commit
+          TextField(
+            onChanged: (val) {
+          setState(() {
+            callUserId = val;
+          });
 
-             CallHelper.onUserLogin(widget.username,widget.userId);
+            },
+            decoration: InputDecoration(
+                hintText: "UserId", border: OutlineInputBorder()),
+          ),
 
-             Navigator.push(context, MaterialPageRoute(builder: (_)=>CallScreen(callId:widget.callId,userId:widget.username,username: widget.userId,)));
+        ZegoSendCallInvitationButton(
+        isVideoCall: true,
+        resourceID: "zegouikit_call",
+        invitees: [
+          ZegoUIKitUser(
+            id: callUserId,
+            name: widget.username,
+          ),
 
-          }, child: Text('Call'))
+          // ZegoUIKitUser(
+          //   id: widget.userId,
+          //   name: widget.username,
+          // )
+        ],
+      ),
+
+          ZegoSendCallInvitationButton(
+            isVideoCall: false,
+            resourceID: "zegouikit_call",
+            invitees: [
+              ZegoUIKitUser(
+                id: callUserId,
+                name: widget.username,
+              ),
+
+              // ZegoUIKitUser(
+              //   id: widget.userId,
+              //   name: widget.username,
+              // )
+            ],
+          ),
+          // ElevatedButton(onPressed: (){
+          //
+          //    CallHelper.onUserLogin(widget.username,widget.userId);
+          //
+          //    ZegoSendCallInvitationButton(
+          //      isVideoCall: true,
+          //      resourceID: "zegouikit_call", //You need to use the resourceID that you created in the subsequent steps. Please continue reading this document.
+          //      invitees: [
+          //        ZegoUIKitUser(
+          //          id: widget.userId,
+          //          name: widget.username,
+          //        ),
+          //
+          //        // ZegoUIKitUser(
+          //        //   id: widget.userId,
+          //        //   name: widget.username,
+          //        // )
+          //      ],
+          //    );
+          //    // Navigator.push(context, MaterialPageRoute(builder: (_)=>CallScreen(callId:widget.callId,userId:widget.username,username: widget.userId,)));
+          //
+          // }, child: Text('Call'))
         ],
       ),
     );

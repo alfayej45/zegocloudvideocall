@@ -30,13 +30,11 @@ class CallHelper{
         icon: Text('call')
           //fff this
 
-
       )
 
     ),
 
     notificationConfig: ZegoCallInvitationNotificationConfig(
-
     androidNotificationConfig: ZegoCallAndroidNotificationConfig(
     showFullScreen: true,
     channelID: "ZegoUIKit",
@@ -68,20 +66,12 @@ class CallHelper{
       // },
     );
   }
-
   /// on App's user logout
   static onUserLogout() {
     /// 1.2.2. de-initialization ZegoUIKitPrebuiltCallInvitationService
     /// when app's user is logged out
     ZegoUIKitPrebuiltCallInvitationService().uninit();
   }
-
-
-
-
-
-
-
 
 }
 

@@ -49,21 +49,21 @@ class _MyLoginState extends State<MyLogin> {
               decoration: InputDecoration(
                   hintText: "UserId", border: OutlineInputBorder()),
             ),
-            TextField(
-              onChanged: (val) {
-                callId = val;
-              },
-              decoration: InputDecoration(
-                  hintText: "call", border: OutlineInputBorder()),
-            ),
+            // TextField(
+            //   onChanged: (val) {
+            //     callId = val;
+            //   },
+            //   decoration: InputDecoration(
+            //       hintText: "call", border: OutlineInputBorder()),
+            // ),
             SizedBox(
               height: 10,
             ),
             ElevatedButton(
                 onPressed: () {
-                 // CallHelper.onUserLogin(name,userId);
-                 Navigator.push(context, MaterialPageRoute(builder: (_)=>HomePage(callId:callId,username: name,userId: userId,)));
-                },
+                  CallHelper.onUserLogin(name,userId);
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=>HomePage(callId:callId,username: name,userId: userId,)));
+                 },
                 child: Text("Submit"))
           ],
         ),
