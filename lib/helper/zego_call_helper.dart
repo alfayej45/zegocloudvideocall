@@ -1,13 +1,15 @@
 
 
-import 'dart:ffi';
+import 'dart:ffi' as ffi;
+import 'dart:ui' as ui;
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
 import 'package:zegocloudtest/util/all_constant.dart';
-
-import '../screen/loginpage.dart';
+import 'package:flutter/material.dart';
+import '../main.dart';
 
 class CallHelper{
 
@@ -34,6 +36,7 @@ class CallHelper{
 
     ),
 
+
     notificationConfig: ZegoCallInvitationNotificationConfig(
     androidNotificationConfig: ZegoCallAndroidNotificationConfig(
     showFullScreen: true,
@@ -48,22 +51,49 @@ class CallHelper{
     ),
     ),
 
-      // requireConfig: (ZegoCallInvitationData data) {
-      //   final config = (data.invitees.length > 1)
-      //       ? ZegoCallType.videoCall == data.type
-      //       ? ZegoUIKitPrebuiltCallConfig.groupVideoCall()
-      //       : ZegoUIKitPrebuiltCallConfig.groupVoiceCall()
-      //       : ZegoCallType.videoCall == data.type
-      //       ? ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
-      //       : ZegoUIKitPrebuiltCallConfig.oneOnOneVoiceCall();
-      //
-      //   /// support minimizing, show minimizing button
-      //   config.topMenuBar.isVisible = true;
-      //   config.topMenuBar.buttons
-      //       .insert(0, ZegoCallMenuBarButtonName.minimizingButton);
-      //
-      //   return config;
-      // },
+      requireConfig: (ZegoCallInvitationData data) {
+        final config = (data.invitees.length > 1)
+            ? ZegoCallType.videoCall == data.type
+            ? ZegoUIKitPrebuiltCallConfig.groupVideoCall()
+            : ZegoUIKitPrebuiltCallConfig.groupVoiceCall()
+            : ZegoCallType.videoCall == data.type
+            ? ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
+            : ZegoUIKitPrebuiltCallConfig.oneOnOneVoiceCall();
+
+        /// support minimizing, show minimizing button
+        config.topMenuBar.isVisible = true;
+        config.duration.isVisible = true;
+        config.duration.onDurationUpdate = (Duration duration) {
+          print('DurationCheck:$duration}');
+          if (duration.inSeconds >= 5 * 60) {
+
+            ZegoUIKitPrebuiltCallController().hangUp(navigatorKey.currentState!.context);
+            print('DurationCheck:$duration}');
+
+          }
+          print('DurationCheck:$duration}');
+        };
+        config.topMenuBar.buttons
+            .insert(0, ZegoCallMenuBarButtonName.minimizingButton);
+
+        config.avatarBuilder = (BuildContext context, Size size,
+            ZegoUIKitUser? user, Map extraInfo) {
+          return user != null
+              ? Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: NetworkImage(
+                  'https://www.pngfind.com/pngs/m/470-4703547_icon-user-icon-hd-png-download.png',
+                ),
+              ),
+            ),
+          )
+              : const SizedBox();
+        };
+        return config;
+
+      },
     );
   }
   /// on App's user logout
