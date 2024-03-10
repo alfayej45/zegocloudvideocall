@@ -1,4 +1,4 @@
-package com.example.zegocloudtest
+package com.zegocloudtest.app
 
 import io.flutter.embedding.android.FlutterActivity
 

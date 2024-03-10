@@ -1,7 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:zego_express_engine/zego_express_engine.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
+import 'package:zegocloudtest/firebase_options.dart';
 import 'package:zegocloudtest/helper/zego_call_helper.dart';
 import 'package:zegocloudtest/screen/loginpage.dart';
 import 'package:zegocloudtest/util/all_constant.dart';
@@ -10,6 +12,9 @@ import 'package:zegocloudtest/util/all_key.dart';
  late GlobalKey<NavigatorState> navigatorKey;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
 
   /// 1.1.2: set navigator key to ZegoUIKitPrebuiltCallInvitationService
   navigatorKey=GlobalKey<NavigatorState>();

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "237838703542",
+    "project_id": "zegocalltest-8e17b",
+    "storage_bucket": "zegocalltest-8e17b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237838703542:android:ad33aa07aed57d117d7f17",
+        "android_client_info": {
+          "package_name": "com.zegocloudtest.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuezyA0VJleylh95SZgDCjTriUoi1O1lU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

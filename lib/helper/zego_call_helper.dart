@@ -40,7 +40,7 @@ class CallHelper{
     notificationConfig: ZegoCallInvitationNotificationConfig(
     androidNotificationConfig: ZegoCallAndroidNotificationConfig(
     showFullScreen: true,
-    channelID: "ZegoUIKit",
+    channelID: "zego_call",
     channelName: "Call Notifications",
     callIDVisibility: true,
     sound: "call",
